@@ -1,0 +1,55 @@
+
+  <form [formGroup]= "form"  class="bg-gradient-to-r from-lime-500 via-lime-400 to-lime-300 w-full ml-16 mt-16">
+    <div class="mt-16 ml-16">
+      <div class="my-4">
+        Maximum ticket capacity:<br>
+        <input type = "text" class="border-2 border-black my-4 mx-1 pl-2" formControlName = "MaximumTicketCapacity"><br>
+      </div>
+
+      <div class="my-4">
+        Total number of tickets:<br>
+        <input type = "text"  class="border-2 border-black my-4 mx-1 pl-2" formControlName="TotalNumberOfTickets"><br>
+      </div>
+
+      <div class="my-4">
+        Ticket release rate:<br>
+        <input type = "text"  class="border-2 border-black my-4 mx-1 pl-2" formControlName="TicketReleaseRate"><br>
+      </div>
+
+
+      <div class="my-4">
+        Customer release rate:<br>
+        <input type = "text"  class="border-2 border-black my-4 mx-1 pl-2" formControlName="CustomerReleaseRate"><br>
+      </div>
+
+
+
+      <div class="my-4">
+        Event name:<br>
+        <input type = "text"  class="border-2 border-black my-4 mx-1 pl-2" formControlName="CustomerReleaseRate"><br>
+      </div>
+
+
+      <div class="my-4">
+        Ticket price:<br>
+        <input type = "text"  class="border-2 border-black my-4 mx-1 pl-2" formControlName="CustomerReleaseRate"><br>
+      </div>
+
+      {{form.value | json}}
+
+
+    </div>
+
+    <button (click)="confirm()" class="bg-gradient-to-r from-blue-600 to bg-blue-500 text-amber-50 border-2 border-blue-300 mt-12 mb-4 ml-20 w-32 text-xl hover:bg-blue-200  hover:transition ease-in">Confirm</button>
+
+  </form>
+
+
+
+
+
+
+
+
+
+
