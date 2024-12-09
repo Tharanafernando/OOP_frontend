@@ -1,4 +1,6 @@
 import { Component,OnInit } from '@angular/core';
+//import {websocket} from "./src/app/services/websoket.service";
+
 
 @Component({
   selector: 'app-result-page',
@@ -8,6 +10,8 @@ import { Component,OnInit } from '@angular/core';
   styleUrl: './result-page.component.css'
 })
 export class ResultPageComponent implements OnInit {
+  // constructor(private websocket:websocket) {
+  // }
   constructor() {
   }
 
