@@ -1,0 +1,57 @@
+
+  <form [formGroup]= "form" (ngSubmit)="confirm()"  class="bg-gradient-to-r from-lime-500 via-lime-400 to-lime-300 w-full ml-16 mt-16">
+    <div class="mt-16 ml-16">
+      <div class="my-4">
+        Total number of tickets:<br>
+        <input type = "number"  class="border-2 border-black my-4 mx-1 pl-2" formControlName="totalTickets"><br>
+      </div>
+
+      <div class="my-4">
+        Maximum ticket capacity:<br>
+        <input type = "number" class="border-2 border-black my-4 mx-1 pl-2" formControlName = "maxTickets" required><br>
+<!--        <div id="max" *ngIf="form.get('MaximumTicketCapacity')?.hasError('GreaterThanZero') && form.get('MaximumTicketCapacity')?.touched">-->
+<!--        <p>Value must be greater than 0</p>-->
+<!--        </div>-->
+      </div>
+
+
+
+      <div class="my-4">
+        Ticket release rate:<br>
+        <input type = "number"  class="border-2 border-black my-4 mx-1 pl-2" formControlName="releaseRate"><br>
+      </div>
+
+
+      <div class="my-4">
+        Customer release rate:<br>
+        <input type = "number"  class="border-2 border-black my-4 mx-1 pl-2" formControlName="customerRate"><br>
+      </div>
+
+
+
+
+      <div>
+        <h3>Total Tickets: {{form.get('totalTickets')?.value}}</h3>
+        <h3>Max Capacity: {{form.get('maxTickets')?.value}}</h3>
+        <h3>Ticket Retrieval Rate: {{form.get('releaseRate')?.value}}</h3>
+        <h3>Customer Retrieval Rate: {{form.get('customerRate')?.value}}</h3>
+      </div>
+
+
+
+    </div>
+
+    <button type = "submit" class="bg-gradient-to-r from-blue-600 to bg-blue-500 text-amber-50 border-2 border-blue-300 mt-12 mb-4 ml-20 w-32 text-xl hover:bg-blue-200  hover:transition ease-in">Start</button><br>
+    <button class="bg-gradient-to-r from-blue-600 to bg-blue-500 text-amber-50 border-2 border-blue-300 mt-4 mb-4 ml-20 w-32 text-xl hover:bg-blue-200  hover:transition ease-in">Stop</button>
+
+  </form>
+
+
+
+
+
+
+
+
+
+
