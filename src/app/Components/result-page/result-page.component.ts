@@ -13,22 +13,28 @@ import {CommonModule} from '@angular/common';
 })
 export class ResultPageComponent implements OnInit {
   logs:string[] = []
-  private logDesctiption:Subscription | undefined
-  constructor(private websocket:WebsocketService) {
-
-  }
+  private logDescription:Subscription | undefined
+  constructor(private websocket:WebsocketService) {}
 
 
   ngOnInit() {
-    this.logDesctiption = this.websocket.logs.subscribe(log => {
-      this.logs.push(log)
+    this.websocket.logs.subscribe(message => {
+      console.log(message)
+      this.logs.push(message)
     })
   }
 
 
+  // ngOnInit() {
+  //   this.logDesctiption = this.websocket.logs.subscribe(message => {
+  //     this.logs.push(message)
+  //   })
+  // }
+
+
   ngOnDestroy(){
-    if (this.logDesctiption){
-      this.logDesctiption.unsubscribe()
+    if (this.logDescription){
+      this.logDescription.unsubscribe()
     }
   }
 

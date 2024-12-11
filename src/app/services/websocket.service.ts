@@ -19,10 +19,13 @@ export class WebsocketService {
 
     this.stompClient = new Client({
       webSocketFactory:() => new SockJS("http://localhost:8020/ws"),
+      reconnectDelay : 5000,
       onConnect:(frame)=>{
-        this.stompClient.subscribe('/topic/target',(message:any)=>{
-          if (message.body){
+        this.stompClient.subscribe('/topic/tickets',(message:any)=>{
+          if (message.body && typeof message.body == "string"){
             this.logDetails.next(message.body)
+          }else {
+            console.log("Invlid message")
           }
 
         });
@@ -43,56 +46,6 @@ export class WebsocketService {
 }
 
 
-// this.stompClient = Stomp.over(socket) as any;
-// this.stompClient = new Client({
-//   webSocketFactory ()  => socket,
-//   onConnect : (frames)=>{}
-//
-// })
-// this.stompClient.connect({},(frame:any)=>{
-//   console.log(frame);
-//   this.stompClient.subscribe('/topic/target',(message:any)=>{
-//     if (message.body){
-//       this.logDetails.next(message.body);
-//     }
-//
-//
-//   });
-// })
-
-  // private client!:Client
-  //
-  // constructor() {
-  //   this.client = new Client()
-  //   // @ts-ignore
-  //   this.client.webSocketFactory = () => new SockJS("http://localhost:8020/websocket")
-  //
-  //   this.client.onConnect = () =>{
-  //     console.log("WebSocket connection is successful")
-  //   }
-  //
-  //   this.client.onDisconnect = () => {
-  //     console.log("WebSocket connection unsuccessful")
-  //   }
-  //
-  //   this.client.onStompError = (error) => {
-  //     console.log("Stomp error: ",error)
-  //   }
-  //
-  //
-  //   this.client.activate()
-  // }
-  //
-  // sendMessage(destination:string,body:any):void{
-  //   if (this.client.connected){
-  //     this.client.publish({
-  //       destination:destination,
-  //       body:JSON.stringify(body)
-  //     });
-  //   }else{
-  //     console.log("connection not set")
-  //   }
-  // }
 
 
 
