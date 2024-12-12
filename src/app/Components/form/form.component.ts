@@ -20,6 +20,7 @@ import {EventService} from '../../event.service';
 })
 export class FormComponent implements OnInit{
   form!:FormGroup;
+  private yourService: any;
 
 
   constructor(
@@ -48,7 +49,12 @@ export class FormComponent implements OnInit{
 
   }
 
-  // MaximumTicketCapacity:['',[Validators.required,GreaterThanZero()]],
+  stopThreads() {
+    this.eventService.stopThreads().subscribe((response:any) => {
+      console.log('Threads stopped', response);
+    });
+  }
+
 
 
 
@@ -57,7 +63,9 @@ export class FormComponent implements OnInit{
       totalTickets:['',Validators.required],
       maxTickets:['',Validators.required],
       releaseRate:['',Validators.required],
-      customerRate:['',Validators.required]
+      customerRate:['',Validators.required],
+      noOfVendor:['',Validators.required],
+      noOfConsumer:['',Validators.required]
     });
   }
 

@@ -1,17 +1,20 @@
 
-  <form [formGroup]= "form" (ngSubmit)="confirm()"  class="bg-gradient-to-r from-lime-500 via-lime-400 to-lime-300 fixed w-auto pr-20 ml-16 mt-16">
+  <form [formGroup]= "form" (ngSubmit)="confirm()"  class="bg-gradient-to-r from-lime-500 via-lime-400 to-lime-300 w-full  ml-16 mt-16 mb-20">
     <div class="mt-16 ml-16">
       <div class="my-4">
         Total number of tickets:<br>
-        <input type = "number"  class="border-2 border-black my-4 mx-1 pl-2" formControlName="totalTickets"><br>
+        <input type = "number"  class="border-2 border-black my-4 mx-1 pl-2" formControlName="totalTickets" min="1"><br>
+        <div *ngIf="form.get('totalTickets')?.value<0 && form.get('totalTickets')?.touched">
+          <small class="text-red-700 font-bold">Value must be greater than 0</small>
+        </div>
       </div>
 
       <div class="my-4">
         Maximum ticket capacity:<br>
         <input type = "number" class="border-2 border-black my-4 mx-1 pl-2" formControlName = "maxTickets" required><br>
-<!--        <div id="max" *ngIf="form.get('MaximumTicketCapacity')?.hasError('GreaterThanZero') && form.get('MaximumTicketCapacity')?.touched">-->
-<!--        <p>Value must be greater than 0</p>-->
-<!--        </div>-->
+        <div *ngIf="form.get('maxTickets')?.value<0 && form.get('maxTickets')?.touched">
+          <small class="text-red-700 font-bold">Value must be greater than 0</small>
+        </div>
       </div>
 
 
@@ -19,30 +22,46 @@
       <div class="my-4">
         Ticket release rate:<br>
         <input type = "number"  class="border-2 border-black my-4 mx-1 pl-2" formControlName="releaseRate"><br>
+        <div *ngIf="form.get('releaseRate')?.value<0 && form.get('releaseRate')?.touched">
+          <small class="text-red-700 font-bold">Value must be greater than 0</small>
+        </div>
       </div>
 
 
       <div class="my-4">
         Customer release rate:<br>
         <input type = "number"  class="border-2 border-black my-4 mx-1 pl-2" formControlName="customerRate"><br>
+        <div *ngIf="form.get('customerRate')?.value<0 && form.get('customerRate')?.touched">
+          <small class="text-red-700 font-bold">Value must be greater than 0</small>
+        </div>
       </div>
 
 
-
-
-      <div>
-        <h3>Total Tickets: {{form.get('totalTickets')?.value}}</h3>
-        <h3>Max Capacity: {{form.get('maxTickets')?.value}}</h3>
-        <h3>Ticket Retrieval Rate: {{form.get('releaseRate')?.value}}</h3>
-        <h3>Customer Retrieval Rate: {{form.get('customerRate')?.value}}</h3>
+      <div class="my-4">
+        Number of Vendors<br>
+        <input type = "number"  class="border-2 border-black my-4 mx-1 pl-2" formControlName="noOfVendor"><br>
+        <div *ngIf="form.get('noOfVendor')?.value<0 && form.get('noOfVendor')?.touched">
+          <small class="text-red-700 font-bold">Value must be greater than 0</small>
+        </div>
       </div>
+
+
+      <div class="my-4">
+        Number of customers:<br>
+        <input type = "number"  class="border-2 border-black my-4 mx-1 pl-2" formControlName="noOfConsumer"><br>
+        <div *ngIf="form.get('noOfConsumer')?.value<0 && form.get('noOfConsumer')?.touched">
+          <small class="text-red-700 font-bold">Value must be greater than 0</small>
+        </div>
+      </div>
+
+
 
 
 
     </div>
 
     <button type = "submit" class="bg-gradient-to-r from-blue-600 to bg-blue-500 text-amber-50 border-2 border-blue-300 mt-12 mb-4 ml-20 w-32 text-xl hover:bg-blue-200  hover:transition ease-in">Start</button><br>
-    <button class="bg-gradient-to-r from-blue-600 to bg-blue-500 text-amber-50 border-2 border-blue-300 mt-4 mb-4 ml-20 w-32 text-xl hover:bg-blue-200  hover:transition ease-in">Stop</button>
+    <button type="button" (click)="stopThreads()"  class="bg-gradient-to-r from-blue-600 to bg-blue-500 text-amber-50 border-2 border-blue-300 mt-4 mb-4 ml-20 w-32 text-xl hover:bg-blue-200  hover:transition ease-in">Stop</button>
 
   </form>
 
